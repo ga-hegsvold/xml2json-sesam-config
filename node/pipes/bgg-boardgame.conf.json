@@ -1,5 +1,5 @@
 {
-  "_id": "boardgame",
+  "_id": "bgg-boardgame",
   "type": "pipe",
   "source": {
     "type": "json",
@@ -16,11 +16,11 @@
       ],
       "create-item": [
         ["copy", "*"],
+        ["make-ni", "boardgame", "@objectid"],
         ["add", "_id", "_S.@collid"],
         ["add", "rdf:type",
           ["ni", "bgg", "_S.@subtype"]
-        ],
-        ["make-ni", "boardgame", "@objectid"]
+        ]
       ]
     }
   },
