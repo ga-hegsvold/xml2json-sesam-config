@@ -1,0 +1,30 @@
+{
+  "_id": "boardgame",
+  "type": "pipe",
+  "source": {
+    "type": "json",
+    "system": "bgg",
+    "url": "/https://boardgamegeek.com/xmlapi/collection/Zodiac"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["create",
+          ["apply", "create-item", "_S.items.item"]
+        ]
+      ],
+      "create-item": [
+        ["copy", "*"],
+        ["add", "_id", "_S.@collid"],
+        ["add", "rdf:type",
+          ["ni", "bgg", "_S.@subtype"]
+        ],
+        ["make-ni", "boardgame", "@objectid"]
+      ]
+    }
+  },
+  "pump": {
+    "cron_expression": "0 0 1 1 ?"
+  }
+}

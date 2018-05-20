@@ -1,0 +1,11 @@
+{
+  "_id": "bgg",
+  "type": "system:microservice",
+  "docker": {
+    "environment": {
+      "XML_API": "https://boardgamegeek.com/xmlapi"
+    },
+    "image": "gamh/xml2json:latest",
+    "port": 5000
+  }
+}
